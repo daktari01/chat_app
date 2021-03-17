@@ -1,3 +1,5 @@
+import 'package:chat_app/models/chatUsersModel.dart';
+import 'package:chat_app/widgets/conversationList.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatefulWidget {
@@ -6,6 +8,18 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+
+  List<ChatUsers> chatUsers = [
+    ChatUsers(name: "Jane Russel", messageText: "Awesome Setup", imageURL: "https://images.generated.photos/B7CJLWXHEhr73EmhhiWyTK-WT39VwobNNqwknL-vwUg/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzA5/NzY1NDcuanBn.jpg", time: "Now"),
+    ChatUsers(name: "Glady's Murphy", messageText: "That's Great", imageURL: "https://images.generated.photos/xoDRbc-MFj6oLyimW39p3Q_uw6FbuGxEbF-H7Rpg0Hg/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzA5/NTIxMTkuanBn.jpg", time: "Yesterday"),
+    ChatUsers(name: "Jorge Henry", messageText: "Hey where are you?", imageURL: "https://images.generated.photos/KSkFZay8lawllgpfawH1UjaofmrXm1sPLZiauTWaYag/rs:fit:512:512/Z3M6Ly9nZW5lcmF0/ZWQtcGhvdG9zLzAw/MzYyNTIuanBn.jpg", time: "31 Mar"),
+    ChatUsers(name: "Philip Fox", messageText: "Busy! Call me in 20 mins", imageURL: "https://uifaces.co/our-content/donated/s9W6Vk2d.jpg", time: "28 Mar"),
+    ChatUsers(name: "Debra Hawkins", messageText: "Thank you, It's awesome", imageURL: "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQ2NjU3MzcyM15BMl5BanBnXkFtZTgwNzY1MzU2NDM@._V1_UY256_CR27,0,172,256_AL_.jpg", time: "23 Mar"),
+    ChatUsers(name: "Jacob Pena", messageText: "will update you in evening", imageURL: "https://i.imgur.com/GLwgYL4.jpg", time: "17 Mar"),
+    ChatUsers(name: "Andrey Jones", messageText: "Can you please share the file?", imageURL: "https://images-na.ssl-images-amazon.com/images/M/MV5BNjk1NzY2ODAyOF5BMl5BanBnXkFtZTgwNTE2NjExMDI@._V1_UY256_CR5,0,172,256_AL_.jpg", time: "24 Feb"),
+    ChatUsers(name: "John Wick", messageText: "How are you?", imageURL: "https://uifaces.co/our-content/donated/yn7PKqTT.jpg", time: "18 Feb"),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,6 +92,21 @@ class _ChatPageState extends State<ChatPage> {
                   )
                 ),
               ),
+            ),
+            ListView.builder(
+              itemCount: chatUsers.length,
+              shrinkWrap: true,
+              padding: EdgeInsets.only(top: 16.0),
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return ConversationList(
+                  name: chatUsers[index].name,
+                  messageText: chatUsers[index].messageText,
+                  imageURL: chatUsers[index].imageURL,
+                  time: chatUsers[index].time,
+                  isMessageRead: (index == 0 || index == 3) ? true : false,
+                );
+              },
             )
           ],
         ),
