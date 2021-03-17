@@ -55,6 +55,29 @@ class _ChatPageState extends State<ChatPage> {
                   ],
                 ),
               )
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 16.0, right: 16.0, left: 16.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search ...',
+                  hintStyle: TextStyle(color: Colors.grey.shade600),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.grey.shade600,
+                    size: 20.0,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey.shade100,
+                  contentPadding: EdgeInsets.all(8.0),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                    borderSide: BorderSide(
+                      color: Colors.grey.shade100
+                    )
+                  )
+                ),
+              ),
             )
           ],
         ),
